@@ -1,31 +1,38 @@
-USERS (table)
-	user_id: (uid INTEGER)
-	name: (string)
-	age: (INTEGER)
-	
 
-TOURNAMENT (table)
-	t_id: (uid INTEGER)
-	t_name: (string)
-	start_date: (DATETIME)
-	end_date: (DATETIME)
-	t_place: (string)
+Table Player:
+    name = CharField(max_length=100)
+    age = IntegerField()
 
-REGISTER_TOURNAMENT (table)
-	r_id: (uid INTEGER)
-	t_id: (t_id INTEGER)
-	user_id: (user_id INTEGER)
-	reg_date: (DATETIME) 
 
-MAIN_GAME (table)
-	user_id: (user_id INTEGER)
-	t_id: (t_id INTEGER)
-	play_time: (INTEGER)
-	score: (INTEGER)
-	win_loss: (INTEGER)
-	ranking: (INTEGER)
-	u_position: (string)
-	u_award: (string)
+Table Tournament:
+    t_name = CharField(max_length=200)
+    start_date = DateTimeField()
+    end_date = DateTimeField()
+    place = CharField(max_length=150)
+
+
+
+Table Groups:
+    group_name = models.CharField(max_length=255)
+    tournament = models.ForeignKey(Tournament)
+
+
+Table Participant:
+    points = IntegerField()
+    rank = IntegerField()
+    group = ForeignKey(Groups)
+    player = ForeignKey(Player)
+    score = CharField(default='0:0', max_length=10)
+
+
+Table Game:
+    group = ForeignKey(Groups)
+    player1 = ForeignKey(Player, related_name="player1")
+    player2 = ForeignKey(Player, related_name="player2")
+    player1score = IntegerField()
+    player2score = IntegerField()
+    	
+    
 
 	
 	
