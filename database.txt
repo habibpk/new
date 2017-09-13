@@ -11,18 +11,9 @@ Table Tournament:
     place = CharField(max_length=150)
 
 
-
 Table Groups:
     group_name = CharField(max_length=255)
     tournament = ForeignKey(Tournament)
-
-
-Table Participant:
-    points = IntegerField()
-    rank = IntegerField()
-    group = ForeignKey(Groups)
-    player = ForeignKey(Player)
-    score = CharField(default='0:0', max_length=10)
 
 
 Table Game:
@@ -31,7 +22,13 @@ Table Game:
     player2 = ForeignKey(Player, related_name="player2")
     player1score = IntegerField()
     player2score = IntegerField()
-    	
+   
+   
+Table Participant:
+    points = IntegerField()
+    rank = IntegerField()
+    group = ForeignKey(Groups)
+    player = ForeignKey(Player) 	
     
 
 	
