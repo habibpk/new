@@ -13,8 +13,8 @@ Table Tournament:
 
 
 Table Groups:
-    group_name = models.CharField(max_length=255)
-    tournament = models.ForeignKey(Tournament)
+    group_name = CharField(max_length=255)
+    tournament = ForeignKey(Tournament)
 
 
 Table Participant:
